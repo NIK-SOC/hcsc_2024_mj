@@ -1,0 +1,14 @@
+version: '3.6'
+
+services:
+  not_a_bad_day:
+    build: .
+    image: localhost/hcsc-2024/ctf-not_a_bad_day:latest
+    restart: unless-stopped
+    ports:
+      - 61370:61370
+    environment:
+      - BACKEND_PORT=61370
+    ulimits:
+      # limit to 700 concurrent processes
+      nproc: 700

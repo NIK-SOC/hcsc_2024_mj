@@ -1,0 +1,11 @@
+FROM quay.io/alvr/alpine-android:latest-jdk17
+
+COPY ThereOTT /build
+COPY ./mobile-native/libs/arm64-v8a /build/app/src/main/jniLibs/arm64-v8a
+COPY ./mobile-native/libs/armeabi-v7a /build/app/src/main/jniLibs/armeabi-v7a
+COPY ./mobile-native/libs/x86_64 /build/app/src/main/jniLibs/x86_64
+COPY ./mobile-utils/libs/arm64-v8a /build/app/src/main/jniLibs/arm64-v8a
+COPY ./mobile-utils/libs/armeabi-v7a /build/app/src/main/jniLibs/armeabi-v7a
+COPY ./mobile-utils/libs/x86_64 /build/app/src/main/jniLibs/x86_64
+
+WORKDIR /build

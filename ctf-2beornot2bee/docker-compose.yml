@@ -1,0 +1,14 @@
+version: '3.6'
+
+services:
+  2beornot2bee:
+    build: .
+    image: localhost/hcsc-2024/ctf-2beornot2bee:latest
+    restart: unless-stopped
+    ports:
+      - 53369:53369
+    environment:
+      - BACKEND_PORT=53369
+    ulimits:
+      # limit to 700 concurrent processes
+      nproc: 700

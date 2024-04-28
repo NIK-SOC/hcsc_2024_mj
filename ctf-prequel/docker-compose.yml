@@ -1,0 +1,14 @@
+version: '3.6'
+
+services:
+  prequel:
+    build: .
+    image: localhost/hcsc-2024/ctf-prequel:latest
+    restart: unless-stopped
+    ports:
+      - 20882:20882
+    environment:
+      - CHALLENGE_PORT=20882
+    ulimits:
+      # limit to 700 concurrent processes
+      nproc: 700

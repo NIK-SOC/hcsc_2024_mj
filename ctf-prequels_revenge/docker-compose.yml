@@ -1,0 +1,14 @@
+version: '3.6'
+
+services:
+  prequels_revenge:
+    build: .
+    image: localhost/hcsc-2024/ctf-prequels_revenge:latest
+    restart: unless-stopped
+    ports:
+      - 10990:10990
+    environment:
+      - CHALLENGE_PORT=10990
+    ulimits:
+      # limit to 700 concurrent processes
+      nproc: 700

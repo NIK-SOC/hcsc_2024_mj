@@ -1,0 +1,8 @@
+FROM docker.io/golang:alpine
+
+COPY . /build
+WORKDIR /build
+
+ENV CGO_ENABLED=0
+
+CMD ["go", "build", "-ldflags", "-s -w", "-o", "/tmp/returnofjack", "."]

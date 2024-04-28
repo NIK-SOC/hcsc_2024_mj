@@ -1,0 +1,3 @@
+FROM quay.io/alvr/alpine-android:latest-jdk17
+
+RUN extras ndk

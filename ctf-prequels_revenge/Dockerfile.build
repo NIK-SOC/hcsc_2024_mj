@@ -1,0 +1,19 @@
+FROM ghcr.io/void-linux/void-glibc:latest
+
+RUN xbps-install -Suy && \
+    xbps-install -y \
+    gcc \
+    make \
+    git \
+    libseccomp-devel
+
+COPY src /src
+COPY out/libsqlite3.a /src/libsqlite3.a
+COPY assets/sqlite3.h /src/sqlite3.h
+
+WORKDIR /src
+RUN make \
+    && rm -rf /var/cache/xbps \
+    && git clone --depth 1 --single-branch --branch master https://github.com/johnsonjh/ynetd.git /ynetd \
+    && cd /ynetd \
+    && make

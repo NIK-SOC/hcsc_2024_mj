@@ -1,0 +1,14 @@
+version: '3.6'
+
+services:
+  thereott:
+    build: .
+    image: localhost/hcsc-2024/ctf-thereott:latest
+    restart: unless-stopped
+    ports:
+      - 7385:7385
+    environment:
+      - BACKEND_PORT=7385
+    ulimits:
+      # limit to 700 concurrent processes
+      nproc: 700

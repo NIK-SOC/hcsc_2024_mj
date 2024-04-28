@@ -1,0 +1,14 @@
+version: '3.6'
+
+services:
+  epiclitl_curve:
+    build: .
+    image: localhost/hcsc-2024/ctf-epiclitl_curve:latest
+    restart: unless-stopped
+    ports:
+      - 49428:49428
+    environment:
+      - BACKEND_PORT=49428
+    ulimits:
+      # limit to 700 concurrent processes
+      nproc: 700

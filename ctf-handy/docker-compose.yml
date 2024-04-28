@@ -1,0 +1,14 @@
+version: '3.6'
+
+services:
+  handy:
+    build: .
+    image: localhost/hcsc-2024/ctf-handy:latest
+    restart: unless-stopped
+    ports:
+      - 54847:54847
+    environment:
+      - BACKEND_PORT=54847
+    ulimits:
+      # limit to 700 concurrent processes
+      nproc: 700

@@ -1,0 +1,12 @@
+version: '3.6'
+
+services:
+  return_of_jack:
+    build: .
+    image: localhost/hcsc-2024/ctf-return_of_jack:latest
+    restart: unless-stopped
+    network_mode: host # know the risks!
+    privileged: true # know the risks!
+    ulimits:
+      # limit to 700 concurrent processes
+      nproc: 700
